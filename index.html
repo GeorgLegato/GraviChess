@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GraviChess - 3D Gravity Chess</title>
+  <script type="module" crossorigin src="/GraviChess/assets/index-CCvoAz8X.js"></script>
+  <link rel="stylesheet" crossorigin href="/GraviChess/assets/index-5sdceGYy.css">
+</head>
+<body>
+  <!-- Start Screen Overlay -->
+  <div id="start-screen" class="overlay">
+    <div class="start-content">
+      <h1 class="title">GraviChess</h1>
+      <p class="subtitle">Chess in Curved Spacetime</p>
+      
+      <div class="rules-preview">
+        <h3>🌌 Gravity Rules</h3>
+        <p>Pieces warp the board based on their mass:</p>
+        <ul>
+          <li>Heavier pieces sink deeper into spacetime</li>
+          <li>Each piece creates a gravity well around it</li>
+          <li>You cannot capture pieces higher than you (escape velocity!)</li>
+        </ul>
+      </div>
+
+      <div class="piece-weights">
+        <div class="weight-item"><span>♟ Pawn</span><span>-1</span></div>
+        <div class="weight-item"><span>♞ Knight</span><span>-2</span></div>
+        <div class="weight-item"><span>♝ Bishop</span><span>-3</span></div>
+        <div class="weight-item"><span>♜ Rook</span><span>-4</span></div>
+        <div class="weight-item"><span>♛ Queen</span><span>-5</span></div>
+        <div class="weight-item"><span>♚ King</span><span>-6</span></div>
+      </div>
+
+      <div class="controls-info">
+        <h3>🎮 Controls</h3>
+        <p>Left-click on board edge: Rotate camera</p>
+        <p>Scroll: Zoom in/out</p>
+        <p>Click piece: Select & show moves</p>
+      </div>
+
+      <div class="main-buttons">
+        <button id="start-button" class="start-btn">Start Game</button>
+        <button id="tutorial-button" class="tutorial-btn">Tutorial</button>
+      </div>
+      
+      <div class="color-select">
+        <label>Play as:</label>
+        <select id="player-color">
+          <option value="white">White</option>
+          <option value="black">Black</option>
+        </select>
+      </div>
+      
+      <div class="piece-set-select">
+        <label>Piece Set:</label>
+        <div class="piece-set-previews">
+          <div class="piece-set-option selected" data-set="procedural">
+            <canvas id="king-preview-a" width="80" height="80"></canvas>
+            <span>Set A</span>
+          </div>
+          <div class="piece-set-option" data-set="3ds">
+            <canvas id="king-preview-b" width="80" height="80"></canvas>
+            <span>Set B</span>
+          </div>
+        </div>
+        <input type="hidden" id="piece-set" value="procedural">
+      </div>
+    </div>
+  </div>
+
+  <!-- Tutorial Screen Overlay -->
+  <div id="tutorial-screen" class="overlay hidden">
+    <div class="tutorial-content">
+      <div class="tutorial-bubble">
+        <h2 id="tutorial-title">Welcome to GraviChess!</h2>
+        <p id="tutorial-text">In this game, chess pieces have mass and warp the board...</p>
+        <div class="tutorial-step-indicator" id="tutorial-step-indicator">1 / 11</div>
+      </div>
+      <div class="tutorial-buttons">
+        <button id="tutorial-leave" class="tutorial-leave-btn">Leave</button>
+        <button id="tutorial-next" class="tutorial-next-btn">Next →</button>
+        <button id="tutorial-start" class="tutorial-start-btn" style="display: none;">Start Game!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game UI Overlay -->
+  <div id="game-ui" class="game-ui hidden">
+    <div class="turn-indicator">
+      <span id="current-turn">White's Turn</span>
+    </div>
+    <div class="game-status" id="game-status"></div>
+    <button id="restart-button" class="restart-btn">Restart</button>
+  </div>
+
+  <!-- GraviChess Logo -->
+  <div id="logo-container" class="logo-container">
+    <span class="logo-text">GraviChess</span>
+    <span class="logo-tagline">Curved Spacetime Chess</span>
+  </div>
+
+  <!-- Three.js Canvas Container -->
+  <div id="canvas-container"></div>
+
+</body>
+</html>
